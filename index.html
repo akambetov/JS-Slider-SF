@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <title>IC "Repair Design Project"</title>
+</head>
+<body>
+  <!-- SVG sprite -->
+  <!-- left arrow -->
+  <svg style="display: none;">
+    <symbol id="arrow-left" viewBox="0 0 476.213 476.213">
+      <polygon points="476.213,223.106 57.426,223.106 91.819,188.713 70.606,167.5 0,238.106 70.606,308.713 91.819,287.5 
+	57.426,253.106 476.213,253.106 "/>
+    </symbol>  
+  </svg>
+
+  <!-- right arrow -->
+  <svg style="display: none;">
+    <symbol id="arrow-right" viewBox="0 0 476.213 476.213">
+      <polygon points="405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 
+	405.606,308.713 476.213,238.106 "/>
+    </symbol>  
+  </svg>
+
+  <!-- point -->
+  <svg style="display: none;">
+    <symbol id="point" viewBox="0 0 10 11">
+      <rect x="0.0583191" y="0.45636" width="9.56667" height="9.56667" rx="4.78333"/>
+    </symbol>  
+  </svg>
+  <!-- /header -->
+  <main>
+
+    <section class="projects">
+      <div class="container projects-container">
+        <div class="projects-img">
+          <ul class="projects-nav">
+            <li class="projects-nav-item"><a href="">Rostov-on-Don, Admiral</a></li>
+            <li class="projects-nav-item"><a href="">Sochi Thieves</a></li>
+            <li class="projects-nav-item"><a href="">Rostov-on-Don Patriotic</a></li>
+          </ul>
+          
+          <img src="./img/projects/room-1.jpg" alt="Room. Rostov-on-Don, Admiral">
+          <img class="mobile-arrow" src="./img/icons/arrow-left-mobile.svg" alt="Left arrrow">
+          <img class="mobile-arrow" src="./img/icons/arrow-right-mobile.svg" alt="Right arrrow">
+        </div>
+        <div class="projects-text">
+          <h2 class="title projects-title projects-title--absolute">
+            Completed <br>projects
+          </h2>
+          <p>
+            Only a small part of the work performed by our company is presented on the site. For 14 years on in the construction 
+            market we have made happy more than 1000 families
+          </p>
+          <div class="projects-about">
+            <div class="projects-about-item">
+              <div class="wrapper">
+                <span class="title projects-about-title">City:</span>
+                <p class="projects-about-text">Rostov-on-Don <br>LCD admiral</p>
+              </div>
+              <div class="wrapper">
+                <span class="title projects-about-title">apartment area:</span>
+                <p class="projects-about-text">81 m2</p>
+              </div>
+            </div>
+
+            <div class="projects-about-item">
+              <div class="wrapper">
+                <span class="title projects-about-title">Repair time:</span>
+                <p class="projects-about-text">3.5 months</p>
+              </div>
+              <div class="wrapper">
+                <span class="title projects-about-title">Repair Cost:</span>
+                <p class="projects-about-text">Upon request</sup></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="projects-controls">
+            <svg class="projects-controls-icon arrow arrow-left">
+              <use xlink:href="#arrow-left"></use>
+            </svg>
+            <svg class="projects-controls-icon point active">
+              <use xlink:href="#point"></use>
+            </svg>
+            <svg class="projects-controls-icon point">
+              <use xlink:href="#point"></use>
+            </svg>
+            <svg class="projects-controls-icon point">
+              <use xlink:href="#point"></use>
+            </svg>
+            <svg class="projects-controls-icon arrow arrow-right">
+              <use xlink:href="#arrow-right"></use>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+  </footer>
+</body>
+</html>
