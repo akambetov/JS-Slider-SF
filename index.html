@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./styles/style.css">
   <title>IC "Repair Design Project"</title>
 </head>
 <body>
@@ -42,9 +42,16 @@
             <li class="projects-nav-item"><a href="">Rostov-on-Don Patriotic</a></li>
           </ul>
           
-          <img src="./img/projects/room-1.jpg" alt="Room. Rostov-on-Don, Admiral">
-          <img class="mobile-arrow" src="./img/icons/arrow-left-mobile.svg" alt="Left arrrow">
-          <img class="mobile-arrow" src="./img/icons/arrow-right-mobile.svg" alt="Right arrrow">
+          <div class="slider-container">
+            <div class="slider-track">
+              <img class="slider-item" src="./img/projects/room-1.jpg" alt="Room. Rostov-on-Don, Admiral">
+              <img class="slider-item" src="./img/projects/room-2.jpg" alt="Room. Sochi Thieves">
+              <img class="slider-item" src="./img/projects/room-3.jpg" alt="Room. Rostov-on-Don Patriotic">
+            </div>
+          </div>
+
+          <img class="mobile-arrow" src="./img/icons/arrow-left-mobile.svg" alt="Left arrow">
+          <img class="mobile-arrow" src="./img/icons/arrow-right-mobile.svg" alt="Right arrow">
         </div>
         <div class="projects-text">
           <h2 class="title projects-title projects-title--absolute">
@@ -101,5 +108,7 @@
     </section>
   </main>
   </footer>
+
+  <script src="./slider.js"></script>
 </body>
 </html>
