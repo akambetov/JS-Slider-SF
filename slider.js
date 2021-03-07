@@ -7,42 +7,66 @@ const trackW = itemW * (sliderItem.length - 1);
 
 const prev = document.querySelector(".arrow-left");
 const next = document.querySelector(".arrow-right");
+const mobilePrev = document.querySelector(".mobile-arrow-left");
+const mobileNext = document.querySelector(".mobile-arrow-right");
 const controlPoints = Array.from(document.querySelectorAll(".point"));
-console.log(controlPoints);
+const links = Array.from(document.querySelectorAll(".projects-nav-item a"));
 
-prev.addEventListener("click", slideBack);
-next.addEventListener("click", slideNext);
-controlPoints.forEach((point, idx) => {
-  point.addEventListener("click", () => {
-    position = -idx * itemW;
-    slideByPoints(position);
-    point.classList.add("active");
+//Добавить слушатели на ссылки и точки
+function addSlideListener(arr) {
+  arr.forEach((item, idx) => {
+    item.addEventListener("click", (e) => {
+      e.preventDefault();
+      position = -idx * itemW;
+      slideByPointsLinks(position);
+      addActiveClass(idx);
+    });
   });
-});
+}
 
-function slideNext() {
-  // Классы для точек слайдера
-  controlPoints.forEach((item) => item.classList.remove("active"));
+// Добавить активный класс для точек и ссылок
+function addActiveClass(idx) {
+  links[idx].classList.add("active");
+  controlPoints[idx].classList.add("active");
+}
+// Удалить активный класс с точек и ссылок
+function removeActiveClass(arr) {
+  arr.forEach((item) => item.classList.remove("active"));
+}
+
+// Listeners
+addSlideListener(controlPoints);
+addSlideListener(links);
+prev.addEventListener("click", slideArrowBack);
+next.addEventListener("click", slideArrowNext);
+mobilePrev.addEventListener("click", slideArrowBack);
+mobileNext.addEventListener("click", slideArrowNext);
+
+function slideArrowNext() {
+  // Активный класс для точек и ссылок
+  removeActiveClass([...controlPoints, ...links]);
   let idx = Math.abs(position) / itemW + 1;
   if (idx > controlPoints.length - 1) idx = 0;
   controlPoints[idx].classList.add("active");
-  console.log(idx);
+  links[idx].classList.add("active");
 
   Math.abs(position) >= trackW ? (position = 0) : (position -= itemW);
   sliderTrack.style.transform = `translateX(${position}px)`;
 }
-function slideBack() {
-  // Классы для точек слайдера
-  controlPoints.forEach((item) => item.classList.remove("active"));
-  let idx = Math.abs(position) / itemW + 1;
-  if (idx > controlPoints.length - 1) idx = 0;
+
+function slideArrowBack() {
+  // Активный класс для точек и ссылок
+  removeActiveClass([...controlPoints, ...links]);
+  let idx = Math.abs(position) / itemW - 1;
+  if (idx < 0) idx = controlPoints.length - 1;
   controlPoints[idx].classList.add("active");
-  console.log(idx);
+  links[idx].classList.add("active");
 
   position === 0 ? (position = -trackW) : (position += itemW);
   sliderTrack.style.transform = `translateX(${position}px)`;
 }
-function slideByPoints(position) {
-  controlPoints.forEach((item) => item.classList.remove("active"));
+
+function slideByPointsLinks(position) {
+  removeActiveClass([...controlPoints, ...links]);
   sliderTrack.style.transform = `translateX(${position}px)`;
 }
