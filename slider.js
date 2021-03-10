@@ -16,7 +16,7 @@ const sliderAboutTrack = document.querySelector(".slider-about-track");
 const sliderAboutItem = document.querySelectorAll(".slider-about-item");
 const itemAboutH = slidereAboutContainer.clientHeight; // sliderAboutItem[0].clientHeight;
 const trackAboutH = itemAboutH * (sliderAboutItem.length - 1);
-console.log(itemAboutH);
+
 // Элементы управления
 const prev = document.querySelector(".arrow-left");
 const next = document.querySelector(".arrow-right");
