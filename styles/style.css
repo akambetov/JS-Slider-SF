@@ -1,4 +1,5 @@
 @import 'fonts.css';
+@import 'slider.css';
 /* @import 'custom-checkbox.css'; */
 
 :root {
@@ -812,20 +813,6 @@ button:nth-of-type(2) {
 }
 .contacts-social a:first-child img{
   margin-right: 15px;
-}
-
-
-/* SLIDER */
-.slider-container {
-  overflow: hidden;
-  max-width: 679px;
-  margin: 0 auto;
-  position: relative;
-
-}
-.slider-track {
-  display: flex;
-  transition: all .3s;
 }
 
 

@@ -1,0 +1,16 @@
+/* SLIDER */
+.slider-container {
+  overflow: hidden;
+  max-width: 679px;
+  margin: 0 auto;
+  position: relative;
+
+}
+.slider-about-container {
+  height: 197px;
+  max-width: 440px;
+}
+.slider-track {
+  display: flex;
+  transition: all .3s;
+}
