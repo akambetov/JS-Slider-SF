@@ -1,7 +1,6 @@
+import content from "./content.js";
 // Позиция трека галереи
 let position = 0;
-// Позиция трека текстового описания
-let positionAbout = 0;
 
 // Элементы галереи (картинки)
 const slidereContainer = document.querySelector(".slider-container");
@@ -10,12 +9,11 @@ const sliderItem = document.querySelectorAll(".slider-item");
 const itemW = sliderItem[0].width;
 const trackW = itemW * (sliderItem.length - 1);
 
-// Элементы с текстовым описанием галереи (картинок)
-const slidereAboutContainer = document.querySelector(".slider-about-container");
-const sliderAboutTrack = document.querySelector(".slider-about-track");
-const sliderAboutItem = document.querySelectorAll(".slider-about-item");
-const itemAboutH = slidereAboutContainer.clientHeight; // sliderAboutItem[0].clientHeight;
-const trackAboutH = itemAboutH * (sliderAboutItem.length - 1);
+// Элементы DOM для текста
+const cityNode = document.querySelector("#city");
+const areaNode = document.querySelector("#area");
+const repairTimeNode = document.querySelector("#repair-time");
+const costNode = document.querySelector("#cost");
 
 // Элементы управления
 const prev = document.querySelector(".arrow-left");
@@ -31,8 +29,7 @@ function addSlideListener(arr) {
     item.addEventListener("click", (e) => {
       e.preventDefault();
       position = -idx * itemW;
-      positionAbout = -idx * itemAboutH;
-      slideByPointsLinks(position, positionAbout);
+      slideByPointsLinks(position, idx);
       addActiveClass(idx);
     });
   });
@@ -47,8 +44,18 @@ function addActiveClass(idx) {
 function removeActiveClass(arr) {
   arr.forEach((item) => item.classList.remove("active"));
 }
+// Рендер текста
+function renderContent(idx) {
+  cityNode.innerHTML = content[idx].city;
+  areaNode.innerText = content[idx].area;
+  repairTimeNode.innerText = content[idx].repairTime;
+  costNode.innerText = content[idx].сost;
+}
 
 // Listeners
+window.addEventListener("load", () => {
+  renderContent(0);
+});
 addSlideListener(controlPoints);
 addSlideListener(links);
 prev.addEventListener("click", slideArrowBack);
@@ -68,11 +75,8 @@ function slideArrowNext() {
   Math.abs(position) >= trackW ? (position = 0) : (position -= itemW);
   sliderTrack.style.transform = `translateX(${position}px)`;
 
-  // слайд текста
-  Math.abs(positionAbout) >= trackAboutH
-    ? (positionAbout = 0)
-    : (positionAbout -= itemAboutH);
-  sliderAboutTrack.style.transform = `translateY(${positionAbout}px)`;
+  // Рендер текста
+  renderContent(idx);
 }
 
 function slideArrowBack() {
@@ -87,15 +91,14 @@ function slideArrowBack() {
   position === 0 ? (position = -trackW) : (position += itemW);
   sliderTrack.style.transform = `translateX(${position}px)`;
 
-  // слайд текста
-  positionAbout === 0
-    ? (positionAbout -= itemAboutH * (sliderAboutItem.length - 1))
-    : (positionAbout += itemAboutH);
-  sliderAboutTrack.style.transform = `translateY(${positionAbout}px)`;
+  // Рендер текста
+  renderContent(idx);
 }
 
-function slideByPointsLinks(position, positionAbout) {
+function slideByPointsLinks(position, idx) {
   removeActiveClass([...controlPoints, ...links]);
   sliderTrack.style.transform = `translateX(${position}px)`;
-  sliderAboutTrack.style.transform = `translateY(${positionAbout}px)`;
+
+  // Рендер текста
+  renderContent(idx);
 }
