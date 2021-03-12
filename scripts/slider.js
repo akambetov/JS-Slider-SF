@@ -52,10 +52,15 @@ function renderContent(idx) {
   costNode.innerText = content[idx].сost;
 }
 
+/* Была задумка, что поля с названием города, площади, времени и цены
+  в HTML сделать пустым, потом динамически заполнить в скрипте при "onload".
+  Потом подумал, что оставлять в HTML пустые элементы неправильно. 
+*/
+// window.addEventListener("load", () => {
+//   renderContent(0);
+// });
+
 // Listeners
-window.addEventListener("load", () => {
-  renderContent(0);
-});
 addSlideListener(controlPoints);
 addSlideListener(links);
 prev.addEventListener("click", slideArrowBack);
