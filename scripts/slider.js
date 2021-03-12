@@ -1,4 +1,23 @@
-import content from "./content.js";
+const content = [
+  {
+    city: "Rostov-on-Don <br>LCD admiral",
+    area: "81 m2",
+    repairTime: "3.5 months",
+    сost: "Upon request",
+  },
+  {
+    city: "Sochi <br>Thieves",
+    area: "105 m2",
+    repairTime: "4 months",
+    сost: "Upon request",
+  },
+  {
+    city: "Rostov-on-Don <br>Patriotic",
+    area: "93 m2",
+    repairTime: "3 months",
+    сost: "Upon request",
+  },
+];
 // Позиция трека галереи
 let position = 0;
 
@@ -29,8 +48,9 @@ function addSlideListener(arr) {
     item.addEventListener("click", (e) => {
       e.preventDefault();
       position = -idx * itemW;
-      slideByPointsLinks(position, idx);
+      slideByPointsLinks(position);
       addActiveClass(idx);
+      renderContent(idx);
     });
   });
 }
@@ -100,10 +120,7 @@ function slideArrowBack() {
   renderContent(idx);
 }
 
-function slideByPointsLinks(position, idx) {
+function slideByPointsLinks(position) {
   removeActiveClass([...controlPoints, ...links]);
   sliderTrack.style.transform = `translateX(${position}px)`;
-
-  // Рендер текста
-  renderContent(idx);
 }
